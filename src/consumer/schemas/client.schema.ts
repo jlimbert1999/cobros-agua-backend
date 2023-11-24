@@ -9,24 +9,27 @@ export class Client {
   @Prop({
     required: true,
     type: String,
+    uppercase: true,
   })
   firstname: string;
 
   @Prop({
     required: true,
     type: String,
+    uppercase: true,
   })
   lastname: number;
 
   @Prop({
-    required: true,
     type: String,
+    uppercase: true,
   })
   middlename: string;
 
   @Prop({
     required: true,
     type: Number,
+    unique: true,
   })
   dni: number;
 
