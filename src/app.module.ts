@@ -3,11 +3,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConsumerModule } from './consumer/consumer.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    AuthModule,
     ConsumerModule,
-    MongooseModule.forRoot('mongodb://localhost/cobros-agua'),
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
+    MongooseModule.forRoot('mongodb://127.0.0.1/cobros-agua'),
   ],
   controllers: [AppController],
   providers: [AppService],
