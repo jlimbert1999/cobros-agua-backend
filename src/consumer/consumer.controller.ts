@@ -1,25 +1,11 @@
 import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
 import { ConsumerService } from './consumer.service';
-import {
-  CreateActionDto,
-  CreateClientDto,
-  CreateReadingDto,
-  UpdateReadingDto,
-} from './dto';
+import { CreateReadingDto, UpdateReadingDto } from './dto';
 
 @Controller('consumer')
 export class ConsumerController {
   constructor(private readonly consumerService: ConsumerService) {}
 
-  @Post('action')
-  createAction(@Body() action: CreateActionDto) {
-    return this.consumerService.createAction(action);
-  }
-
-  @Post('client')
-  createClient(@Body() client: CreateClientDto) {
-    return this.consumerService.createClient(client);
-  }
   @Post('reading')
   createReading(@Body() reading: CreateReadingDto) {
     return this.consumerService.createReading(reading);

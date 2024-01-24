@@ -10,10 +10,14 @@ import {
   Reading,
   ReadingSchema,
 } from './schemas';
+import { ActionService } from './services/action.service';
+import { ActionController } from './controllers/action.controller';
+import { ClientController } from './controllers/client.controller';
+import { ClientService } from './services';
 
 @Module({
-  controllers: [ConsumerController],
-  providers: [ConsumerService],
+  controllers: [ConsumerController, ActionController, ClientController],
+  providers: [ConsumerService, ActionService, ClientService],
   imports: [
     MongooseModule.forFeature([
       { name: Action.name, schema: ActionSchema },
