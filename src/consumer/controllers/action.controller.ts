@@ -21,7 +21,7 @@ export class ActionController {
     return this.actionService.update(id, action);
   }
 
-  @Get('search/:text')
+  @Get('availables/:text')
   searchAvailables(@Param('text') text: string) {
     return this.actionService.searchAvailableActions(text);
   }

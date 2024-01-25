@@ -17,6 +17,7 @@ export class ActionService {
     const createdAction = new this.actionModel(action);
     return await createdAction.save();
   }
+
   async update(id: string, action: UpdateActionDto) {
     try {
       return await this.actionModel.findByIdAndUpdate(id, action, {
@@ -39,7 +40,7 @@ export class ActionService {
 
   async searchAvailableActions(text: string) {
     const regexp = new RegExp(text, 'i');
-    const s = await this.actionModel
+    return await this.actionModel
       .aggregate()
       .match({ address: regexp })
       .lookup({
@@ -49,7 +50,5 @@ export class ActionService {
         as: 'client',
       })
       .match({ client: { $size: 0 } });
-    return s;
-    //
   }
 }
